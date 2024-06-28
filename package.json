@@ -1,0 +1,47 @@
+{
+  "name": "tree-sitter-robots-txt",
+  "version": "1.0.0",
+  "description": "Tree sitter parser for robots.txt",
+  "main": "index.js",
+  "types": "bindings/node",
+  "repository": "git@github.com:opa-oz/tree-sitter-robots-txt.git",
+  "author": "Vladimir Levin <opaozhub@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "node-addon-api": "^7.1.0",
+    "node-gyp-build": "^4.8.0"
+  },
+  "peerDependencies": {
+    "tree-sitter": "^0.21.0"
+  },
+  "peerDependenciesMeta": {
+    "tree_sitter": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.22.6",
+    "prebuildify": "^6.0.0"
+  },
+  "scripts": {
+    "generate": "tree-sitter generate",
+    "install": "node-gyp-build",
+    "prebuildify": "prebuildify --napi --strip",
+    "test": "tree-sitter generate && tree-sitter test",
+    "parse": "tree-sitter generate && tree-sitter parse ./test/robots.txt"
+  },
+  "files": [
+    "grammar.js",
+    "binding.gyp",
+    "prebuilds/**",
+    "bindings/node/*",
+    "queries/*",
+    "src/**"
+  ],
+  "tree-sitter": [
+    {
+      "scope": "source.YOUR_LANGUAGE_NAME",
+      "injection-regex": "^YOUR_LANGUAGE_NAME$"
+    }
+  ]
+}

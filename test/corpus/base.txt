@@ -1,0 +1,315 @@
+==================
+basic sample #1
+==================
+
+User-agent: *
+Disallow:
+
+---
+
+    (source_file
+      (rule
+        (directive
+          (userAgent))
+        (value))
+      (rule
+        (directive
+          (disallow))))
+
+
+==================
+basic sample #2
+==================
+
+User-agent: *
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /junk/
+
+---
+
+    (source_file
+      (rule
+        (directive
+          (userAgent))
+        (value))
+      (rule
+        (directive
+          (disallow))
+        (value))
+      (rule
+        (directive
+          (disallow))
+        (value))
+      (rule
+        (directive
+          (disallow))
+        (value)))
+
+==================
+basic sample #3
+==================
+
+User-agent: BadBot # replace 'BadBot' with the actual user-agent of the bot
+User-agent: Googlebot
+Disallow: /private/
+
+---
+
+    (source_file
+      (rule
+        (directive
+          (userAgent))
+        (value)
+        (comment))
+      (rule
+        (directive
+          (userAgent))
+        (value))
+      (rule
+        (directive
+          (disallow))
+        (value)))
+
+==================
+basic sample #4
+==================
+
+# Comments appear after the "#" symbol at the start of a line, or after a directive
+User-agent: * # match all bots
+Disallow: / # keep them out
+
+---
+
+    (source_file
+      (comment)
+      (rule
+        (directive
+          (userAgent))
+        (value)
+        (comment))
+      (rule
+        (directive
+          (disallow))
+        (value)
+        (comment)))
+
+==================
+basic sample #5
+==================
+
+User-agent: googlebot        # all Google services
+Disallow: /private/          # disallow this directory
+
+User-agent: googlebot-news   # only the news service
+Disallow: /                  # disallow everything
+
+User-agent: *                # any robot
+Disallow: /something/        # disallow this directory
+
+---
+
+
+    (source_file
+      (rule
+        (directive
+          (userAgent))
+        (value)
+        (comment))
+      (rule
+        (directive
+          (disallow))
+        (value)
+        (comment))
+      (rule
+        (directive
+          (userAgent))
+        (value)
+        (comment))
+      (rule
+        (directive
+          (disallow))
+        (value)
+        (comment))
+      (rule
+        (directive
+          (userAgent))
+        (value)
+        (comment))
+      (rule
+        (directive
+          (disallow))
+        (value)
+        (comment)))
+
+
+==================
+basic sample #6
+==================
+
+User-agent: *
+Host: cats-magadan.ru
+Disallow: /wp-feed
+Disallow: /wp-includes
+Disallow: /wp-content/cache
+Disallow: /wp-content/plugins
+Disallow: /wp-content/themes
+
+Sitemap: http://cats-magadan.ru/sitemap.xml
+
+---
+
+    (source_file
+      (rule
+        (directive
+          (userAgent))
+        (value))
+      (rule
+        (directive
+            (host))
+        (value))
+      (rule
+        (directive
+          (disallow))
+        (value))
+      (rule
+        (directive
+          (disallow))
+        (value))
+      (rule
+        (directive
+          (disallow))
+        (value))
+      (rule
+        (directive
+          (disallow))
+        (value))
+      (rule
+        (directive
+          (disallow))
+        (value))
+      (rule
+        (directive
+          (sitemap))
+        (value)))
+
+
+==================
+basic sample #7
+==================
+
+User-agent:*
+Allow:/
+
+Sitemap: sitemap.xml
+
+---
+
+    (source_file
+      (rule
+        (directive
+          (userAgent))
+        (value))
+      (rule
+        (directive
+          (allow))
+        (value))
+      (rule
+        (directive
+          (sitemap))
+        (value)))
+
+
+==================
+basic sample #8
+==================
+
+User-Agent: *
+Disallow: # равнозначно Allow: /
+# Crawl-delay: 2
+
+User-Agent: Yandex
+Disallow:
+# Host: www.domain.ru
+# Sitemap: http://www.domain.ru/sitemap.xml
+
+---
+
+    (source_file
+      (rule
+        (directive
+          (userAgent))
+        (value))
+      (rule
+        (directive
+          (disallow))
+        (comment))
+      (comment)
+      (rule
+        (directive
+          (userAgent))
+        (value))
+      (rule
+        (directive
+          (disallow)))
+      (comment)
+      (comment))
+
+==================
+basic sample #9
+==================
+
+User-agent: Yandex
+Disallow: /wp-admin
+Disallow: /wp-includes
+Allow: /wp-includes/js/*
+Disallow: /wp-login.php
+Disallow: /wp-register.php
+Disallow: /xmlrpc.php
+Disallow: *?s*
+Disallow: *?preview=true*
+Disallow: */trackback/
+
+---
+
+    (source_file
+      (rule
+        (directive
+          (userAgent))
+        (value))
+      (rule
+        (directive
+          (disallow))
+        (value))
+      (rule
+        (directive
+          (disallow))
+        (value))
+      (rule
+        (directive
+          (allow))
+        (value))
+      (rule
+        (directive
+          (disallow))
+        (value))
+      (rule
+        (directive
+          (disallow))
+        (value))
+      (rule
+        (directive
+          (disallow))
+        (value))
+      (rule
+        (directive
+          (disallow))
+        (value))
+      (rule
+        (directive
+          (disallow))
+        (value))
+      (rule
+        (directive
+          (disallow))
+        (value)))

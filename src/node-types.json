@@ -1,0 +1,115 @@
+[
+  {
+    "type": "directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "allow",
+          "named": true
+        },
+        {
+          "type": "crawlDelay",
+          "named": true
+        },
+        {
+          "type": "disallow",
+          "named": true
+        },
+        {
+          "type": "host",
+          "named": true
+        },
+        {
+          "type": "sitemap",
+          "named": true
+        },
+        {
+          "type": "userAgent",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "rule",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "directive",
+          "named": true
+        },
+        {
+          "type": "unknownDirective",
+          "named": true
+        },
+        {
+          "type": "value",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "source_file",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "rule",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": ":",
+    "named": false
+  },
+  {
+    "type": "allow",
+    "named": true
+  },
+  {
+    "type": "comment",
+    "named": true
+  },
+  {
+    "type": "crawlDelay",
+    "named": true
+  },
+  {
+    "type": "disallow",
+    "named": true
+  },
+  {
+    "type": "host",
+    "named": true
+  },
+  {
+    "type": "sitemap",
+    "named": true
+  },
+  {
+    "type": "unknownDirective",
+    "named": true
+  },
+  {
+    "type": "userAgent",
+    "named": true
+  },
+  {
+    "type": "value",
+    "named": true
+  }
+]
