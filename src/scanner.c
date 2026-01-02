@@ -58,7 +58,7 @@ static inline void advance(TSLexer *lexer) { lexer->advance(lexer, false); }
 
 static inline void skip(TSLexer *lexer) { lexer->advance(lexer, true); }
 
-unsigned tree_sitter_robots_external_scanner_serialize(void *payload,
+unsigned tree_sitter_robots_txt_external_scanner_serialize(void *payload,
                                                     char *buffer) {
     Scanner *scanner = (Scanner *)payload;
     size_t size = 0;
@@ -73,7 +73,7 @@ unsigned tree_sitter_robots_external_scanner_serialize(void *payload,
     return size;
 }
 
-void tree_sitter_robots_external_scanner_deserialize(void *payload,
+void tree_sitter_robots_txt_external_scanner_deserialize(void *payload,
                                                   const char *buffer,
                                                   unsigned length) {
     Scanner *scanner = (Scanner *)payload;
@@ -88,14 +88,14 @@ void tree_sitter_robots_external_scanner_deserialize(void *payload,
     }
 }
 
-void *tree_sitter_robots_external_scanner_create() {
+void *tree_sitter_robots_txt_external_scanner_create() {
     Scanner *scanner = calloc(1, sizeof(Scanner));
     scanner->indents = indent_vec_new();
-    tree_sitter_robots_external_scanner_deserialize(scanner, NULL, 0);
+    tree_sitter_robots_txt_external_scanner_deserialize(scanner, NULL, 0);
     return scanner;
 }
 
-bool tree_sitter_robots_external_scanner_scan(void *payload, TSLexer *lexer,
+bool tree_sitter_robots_txt_external_scanner_scan(void *payload, TSLexer *lexer,
                                            const bool *valid_symbols) {
     Scanner *scanner = (Scanner *)payload;
     if (lexer->lookahead == '\n') {
@@ -142,7 +142,7 @@ bool tree_sitter_robots_external_scanner_scan(void *payload, TSLexer *lexer,
     return false;
 }
 
-void tree_sitter_robots_external_scanner_destroy(void *payload) {
+void tree_sitter_robots_txt_external_scanner_destroy(void *payload) {
     Scanner *scanner = (Scanner *)payload;
     VEC_FREE(scanner->indents);
     free(scanner);

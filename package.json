@@ -1,5 +1,5 @@
 {
-  "name": "tree-sitter-robots-txt",
+  "name": "tree-sitter-robots_txt",
   "version": "1.0.1",
   "description": "Tree sitter parser for robots.txt",
   "main": "index.js",

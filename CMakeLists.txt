@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.13)
 
-project(tree-sitter-robots
+project(tree-sitter-robots-txt
         VERSION "1.0.1"
         DESCRIPTION "Grammar for robots.txt"
         HOMEPAGE_URL "https://github.com/opa-oz/tree-sitter-robots-txt"
@@ -26,40 +26,40 @@ add_custom_command(OUTPUT "${CMAKE_CURRENT_SOURCE_DIR}/src/parser.c"
                    WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
                    COMMENT "Generating parser.c")
 
-add_library(tree-sitter-robots src/parser.c)
+add_library(tree-sitter-robots-txt src/parser.c)
 if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/src/scanner.c)
-  target_sources(tree-sitter-robots PRIVATE src/scanner.c)
+  target_sources(tree-sitter-robots-txt PRIVATE src/scanner.c)
 endif()
-target_include_directories(tree-sitter-robots
+target_include_directories(tree-sitter-robots-txt
                            PRIVATE src
                            INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/bindings/c>
                                      $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 
-target_compile_definitions(tree-sitter-robots PRIVATE
+target_compile_definitions(tree-sitter-robots-txt PRIVATE
                            $<$<BOOL:${TREE_SITTER_REUSE_ALLOCATOR}>:TREE_SITTER_REUSE_ALLOCATOR>
                            $<$<CONFIG:Debug>:TREE_SITTER_DEBUG>)
 
-set_target_properties(tree-sitter-robots
+set_target_properties(tree-sitter-robots-txt
                       PROPERTIES
                       C_STANDARD 11
                       POSITION_INDEPENDENT_CODE ON
                       SOVERSION "${TREE_SITTER_ABI_VERSION}.${PROJECT_VERSION_MAJOR}"
                       DEFINE_SYMBOL "")
 
-configure_file(bindings/c/tree-sitter-robots.pc.in
-               "${CMAKE_CURRENT_BINARY_DIR}/tree-sitter-robots.pc" @ONLY)
+configure_file(bindings/c/tree-sitter-robots-txt.pc.in
+               "${CMAKE_CURRENT_BINARY_DIR}/tree-sitter-robots-txt.pc" @ONLY)
 
 install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bindings/c/tree_sitter"
         DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
         FILES_MATCHING PATTERN "*.h")
-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/tree-sitter-robots.pc"
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/tree-sitter-robots-txt.pc"
         DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
-install(TARGETS tree-sitter-robots
+install(TARGETS tree-sitter-robots-txt
         LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}")
 
 file(GLOB QUERIES queries/*.scm)
 install(FILES ${QUERIES}
-        DESTINATION "${CMAKE_INSTALL_DATADIR}/tree-sitter/queries/robots")
+        DESTINATION "${CMAKE_INSTALL_DATADIR}/tree-sitter/queries/robots-txt")
 
 add_custom_target(ts-test "${TREE_SITTER_CLI}" test
                   WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"

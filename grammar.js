@@ -22,7 +22,7 @@ const unicodeLetter = /\p{L}/,
 	);
 
 module.exports = grammar({
-	name: "robots",
+	name: "robots_txt",
 	extras: ($) => [/\s/, $.comment],
 	externals: ($) => [$._newline, $._indent, $._dedent],
 	rules: {
