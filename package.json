@@ -5,7 +5,7 @@
   "main": "index.js",
   "types": "bindings/node",
   "repository": "git@github.com:opa-oz/tree-sitter-robots-txt.git",
-  "author": "Vladimir Levin <opaozhub@gmail.com>",
+  "author": "Vladimir Levin <opaozhub@protonmail.com>",
   "license": "MIT",
   "dependencies": {
     "node-addon-api": "^7.1.0",
