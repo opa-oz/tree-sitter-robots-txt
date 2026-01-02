@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-robots-txt",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Tree sitter parser for robots.txt",
   "main": "index.js",
   "types": "bindings/node",
@@ -20,8 +20,8 @@
     }
   },
   "devDependencies": {
-    "tree-sitter-cli": "^0.22.6",
-    "prebuildify": "^6.0.0"
+    "prebuildify": "^6.0.0",
+    "tree-sitter-cli": "^0.22.6"
   },
   "scripts": {
     "generate": "tree-sitter generate",

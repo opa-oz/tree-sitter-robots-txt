@@ -36,3 +36,4 @@ dist/
 *.wasm
 *.obj
 *.o
+.yarn
